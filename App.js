@@ -16,20 +16,10 @@ const StackNavigator = () => (
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <NavigationContainer>
-        <StackNavigator></StackNavigator>
-      </NavigationContainer>
-    </View>
+    <NavigationContainer>
+      <StackNavigator></StackNavigator>
+    </NavigationContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 export default App;

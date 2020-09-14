@@ -6,7 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import App from "../../App";
+import AppScreen from "../components/AppScreen";
+
 import getAuth from "../config/endpoints";
 import creds from "../config/globals";
 
@@ -34,39 +35,42 @@ const LoginScreen = ({ navigation }) => {
         creds.username = username;
         creds.password = password;
         creds.access_token = access_token;
+        navigation.navigate();
       });
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.logo}>NaT</Text>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          placeholder="username"
-          placeholderTextColor="#003f5c"
-          onChangeText={(text) => this.setState({ username: text })}
-        />
+    <AppScreen>
+      <View style={styles.container}>
+        <Text style={styles.logo}>NaT</Text>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.inputText}
+            placeholder="username"
+            placeholderTextColor="#003f5c"
+            onChangeText={(text) => this.setState({ username: text })}
+          />
+        </View>
+        <View style={styles.inputView}>
+          <TextInput
+            secureTextEntry
+            style={styles.inputText}
+            placeholder="password"
+            placeholderTextColor="#003f5c"
+            onChangeText={(text) => this.setState({ password: text })}
+          />
+        </View>
+        <TouchableOpacity
+          style={styles.loginBtn}
+          onPress={() => this.login(this.state.username, this.state.password)}
+        >
+          <Text style={styles.loginText}>LOGIN</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.signupText}>Signup</Text>
+        </TouchableOpacity>
       </View>
-      <View style={styles.inputView}>
-        <TextInput
-          secureTextEntry
-          style={styles.inputText}
-          placeholder="password"
-          placeholderTextColor="#003f5c"
-          onChangeText={(text) => this.setState({ password: text })}
-        />
-      </View>
-      <TouchableOpacity
-        style={styles.loginBtn}
-        onPress={() => this.login(this.state.username, this.state.password)}
-      >
-        <Text style={styles.loginText}>LOGIN</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.signupText}>Signup</Text>
-      </TouchableOpacity>
-    </View>
+    </AppScreen>
   );
 };
 const styles = StyleSheet.create({
