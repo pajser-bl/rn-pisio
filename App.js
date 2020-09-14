@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import LoginScreen from "./src/components/LoginScreen";
+import LoginScreen from "./src/screens/LoginScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -9,18 +9,12 @@ const Stack = createStackNavigator();
 const StackNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen name="Login" component={LoginScreen} />
-    <Stack.Screen name="Assets" component={AssetScreen} />
-    <Stack.Screen name="AssetsDetails" component={AssetDetailsScreen} />
+    {/* <Stack.Screen name="Assets" component={AssetScreen} /> */}
+    {/* <Stack.Screen name="AssetsDetails" component={AssetDetailsScreen} /> */}
   </Stack.Navigator>
 );
 
-export default function App() {
-  const state = {
-    username: "",
-    password: "",
-    access_token: "",
-  };
-
+const App = () => {
   return (
     <View style={styles.container}>
       <NavigationContainer>
@@ -28,7 +22,7 @@ export default function App() {
       </NavigationContainer>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -38,3 +32,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+export default App;
