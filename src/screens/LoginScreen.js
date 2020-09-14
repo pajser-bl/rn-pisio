@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import AppScreen from "../components/AppScreen";
 
-import getAuth from "../config/endpoints";
+import getAuth from "../api/ApiLogin";
 import creds from "../config/globals";
 
 const LoginScreen = ({ navigation }) => {
@@ -32,11 +32,14 @@ const LoginScreen = ({ navigation }) => {
     })
       .then((res) => res.json())
       .then((resJson) => {
+        alert("ok");
         creds.username = username;
         creds.password = password;
         creds.access_token = access_token;
+        alert(creds.access_token);
         navigation.navigate();
       });
+    alert("kita");
   };
 
   return (
@@ -48,7 +51,9 @@ const LoginScreen = ({ navigation }) => {
             style={styles.inputText}
             placeholder="username"
             placeholderTextColor="#003f5c"
-            onChangeText={(text) => this.setState({ username: text })}
+            onChangeText={(text) => {
+              state.username = text;
+            }}
           />
         </View>
         <View style={styles.inputView}>
@@ -57,12 +62,14 @@ const LoginScreen = ({ navigation }) => {
             style={styles.inputText}
             placeholder="password"
             placeholderTextColor="#003f5c"
-            onChangeText={(text) => this.setState({ password: text })}
+            onChangeText={(text) => {
+              state.password = text;
+            }}
           />
         </View>
         <TouchableOpacity
           style={styles.loginBtn}
-          onPress={() => this.login(this.state.username, this.state.password)}
+          onPress={() => login(state.username, state.password)}
         >
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
