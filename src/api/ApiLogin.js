@@ -1,14 +1,12 @@
 import ApiClient from "./ApiClient";
 import endpoints from "../config/endpoints";
 
-const getAuth = (username, password) =>
+const postAuth = (username, password) =>
   ApiClient.post(endpoints.auth, {
-    body: JSON.stringify({
-      username: username,
-      password: password,
-    }),
+    username: username,
+    password: password,
   });
 
 export default {
-  getAuth,
+  postAuth,
 };

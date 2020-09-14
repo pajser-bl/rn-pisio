@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import AppScreen from "../components/AppScreen";
 
-import getAuth from "../api/ApiLogin";
+import ApiLogin from "../api/ApiLogin";
 import creds from "../config/globals";
 
 const LoginScreen = ({ navigation }) => {
@@ -17,30 +17,11 @@ const LoginScreen = ({ navigation }) => {
     password: "",
   };
 
-  const login = (username, password) => {
-    // var result = fetch(getAuth, {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     username: username,
-    //     password: password,
-    //   }),
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Access-Control-Allow-Orignin": "*",
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((resJson) => {
-    //     alert("ok");
-    //     creds.username = username;
-    //     creds.password = password;
-    //     creds.access_token = access_token;
-    //     alert(creds.access_token);
-    //     navigation.navigate();
-    //   });
-    // alert("kita");
-    alert(ApiLogin.getAuth(username, password));
+  const login = async (username, password) => {
+    access_token = alert(ApiLogin.postAuth(username, password));
+    if (access_token !== null) {
+    } else {
+    }
   };
 
   return (
