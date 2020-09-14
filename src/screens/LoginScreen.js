@@ -9,7 +9,7 @@ import {
 import AppScreen from "../components/AppScreen";
 
 import ApiLogin from "../api/ApiLogin";
-import creds from "../config/globals";
+import globals from "../config/globals";
 
 const LoginScreen = ({ navigation }) => {
   const state = {
@@ -18,8 +18,12 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const login = async (username, password) => {
-    access_token = alert(ApiLogin.postAuth(username, password));
-    if (access_token !== null) {
+    const res = await ApiLogin.postAuth(username, password);
+    if (res !== null) {
+      globals.username = res.username;
+      globals.password = res.password;
+      globals.access_token = res.access_token;
+      alert(globals.username);
     } else {
     }
   };
