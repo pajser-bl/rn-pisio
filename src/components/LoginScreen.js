@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import App from "../../App";
 import { Login, logIn } from "../api/Login";
 
 export default class LoginScreen extends React.Component {
@@ -15,6 +16,7 @@ export default class LoginScreen extends React.Component {
   };
 
   login = (username, password) => {
+    // const {appState}=App.state;
     var result = fetch(
       "http://pisio.etfbl.net/~pavlev/AssetManager/api/user/auth",
       {
@@ -31,8 +33,13 @@ export default class LoginScreen extends React.Component {
       }
     )
       .then((res) => res.json())
-      .then(function (res) {
-        alert(res);
+      .then((resJson) => {
+        App.state.setState({
+          username: username,
+          password: password,
+          access_token: resJson,
+        });
+        alert(App.state);
       });
   };
 
@@ -67,7 +74,7 @@ export default class LoginScreen extends React.Component {
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Text style={styles.loginText}>Signup</Text>
+          <Text style={styles.signupText}>Signup</Text>
         </TouchableOpacity>
       </View>
     );
@@ -114,6 +121,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   loginText: {
+    color: "white",
+  },
+  signupText: {
+    textDecorationLine: "line-through",
     color: "white",
   },
 });
