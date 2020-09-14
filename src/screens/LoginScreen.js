@@ -19,12 +19,13 @@ const LoginScreen = ({ navigation }) => {
 
   const login = async (username, password) => {
     const res = await ApiLogin.postAuth(username, password);
-    if (res !== null) {
-      globals.username = res.username;
-      globals.password = res.password;
-      globals.access_token = res.access_token;
-      alert(globals.username);
+    if (res.data.status===200) {
+      globals.username = username;
+      globals.password = password;
+      globals.access_token = res.data.access_token;
+      alert('asd');
     } else {
+      alert('ne');
     }
   };
 
