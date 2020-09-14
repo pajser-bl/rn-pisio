@@ -40,7 +40,7 @@ const LoginScreen = ({ navigation }) => {
     //     navigation.navigate();
     //   });
     // alert("kita");
-    alert(getAuth(username, password));
+    alert(ApiLogin.getAuth(username, password));
   };
 
   return (
