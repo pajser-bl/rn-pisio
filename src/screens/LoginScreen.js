@@ -18,28 +18,29 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const login = (username, password) => {
-    var result = fetch(getAuth, {
-      method: "POST",
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-      headers: {
-        Accept: "application/json",
-        "Access-Control-Allow-Orignin": "*",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((resJson) => {
-        alert("ok");
-        creds.username = username;
-        creds.password = password;
-        creds.access_token = access_token;
-        alert(creds.access_token);
-        navigation.navigate();
-      });
-    alert("kita");
+    // var result = fetch(getAuth, {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     username: username,
+    //     password: password,
+    //   }),
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Access-Control-Allow-Orignin": "*",
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((res) => res.json())
+    //   .then((resJson) => {
+    //     alert("ok");
+    //     creds.username = username;
+    //     creds.password = password;
+    //     creds.access_token = access_token;
+    //     alert(creds.access_token);
+    //     navigation.navigate();
+    //   });
+    // alert("kita");
+    alert(getAuth(username, password));
   };
 
   return (
