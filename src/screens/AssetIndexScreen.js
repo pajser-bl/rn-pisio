@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, FlatList } from "react-native";
 import AppScreen from "../components/AppScreen";
 import assetApi from "../api/asset";
+import AppCard from "../components/AppCard";
 
 const AssetIndexScreen = ({ navigation }) => {
   const [assets, setAssets] = useState([]);
   const [error, setError] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     loadAssets();
@@ -18,6 +20,10 @@ const AssetIndexScreen = ({ navigation }) => {
     }
     setAssets(response.data);
     setError(false);
+  };
+
+  const refresh = () => {
+    refresh.setStae(true);
   };
 
   return (
@@ -34,7 +40,7 @@ const AssetIndexScreen = ({ navigation }) => {
           <AppCard
             title={item.name}
             onPress={() =>
-              navigation.navigate("AssetView", { projectId: item.id })
+              navigation.navigate("AssetView", { assetId: item.id, assets })
             }
           >
             <Text>{item.description}</Text>

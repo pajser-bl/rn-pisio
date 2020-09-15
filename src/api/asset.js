@@ -10,7 +10,7 @@ const getAssets = () =>
   );
 const getAsset = (assetId) =>
   clientApi.get(
-    endpoints.baseUrl + endpoints.asset + projectId,
+    endpoints.baseUrl + endpoints.asset + endpoints.view + assetId,
     {},
     { headers: { Authorization: "Bearer " + globals.access_token } }
   );
@@ -28,8 +28,8 @@ const updateAsset = (assetId, asset) =>
     { headers: { Authorization: "Bearer " + globals.access_token } }
   );
 const deleteAsset = (assetId) =>
-  clientApi.delete(
-    endpoints.baseUrl + endpoints.asset + assetId,
+  clientApi.post(
+    endpoints.baseUrl + endpoints.asset + endpoints.delete + assetId,
     {},
     { headers: { Authorization: "Bearer " + globals.access_token } }
   );

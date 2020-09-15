@@ -1,8 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 
-import colors from "../config/colors";
-
 function AppCard({ title, children, onPress }) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
@@ -17,7 +15,7 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: "10",
     borderRadius: "20",
-    backgroundColor: colors.lightGrey,
+    backgroundColor: "grey",
     padding: 5,
     marginBottom: 10,
   },
@@ -26,7 +24,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: colors.primary,
+    color: "red",
     fontWeight: "bold",
   },
 });
