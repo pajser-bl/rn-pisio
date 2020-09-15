@@ -7,25 +7,27 @@ import {
   TouchableOpacity,
 } from "react-native";
 import AppScreen from "../components/AppScreen";
-
-import ApiLogin from "../api/ApiLogin";
+import loginApi from "../api/login";
 import globals from "../config/globals";
 
 const LoginScreen = ({ navigation }) => {
   const state = {
     username: "",
     password: "",
+    badLoginText: "",
   };
 
   const login = async (username, password) => {
-    const res = await ApiLogin.postAuth(username, password);
-    if (res.data.status===200) {
+    // const res = await .postAuth(username, password);
+    const res = await loginApi.postAuth("admin", "123qwe");
+    if (res.data.status === 200) {
       globals.username = username;
       globals.password = password;
       globals.access_token = res.data.access_token;
-      alert('asd');
+      navigation.navigate("Assets");
     } else {
-      alert('ne');
+      state.badLoginText = "Bad credentials!";
+      navigation.navigate("LoginScreen");
     }
   };
 
@@ -54,6 +56,11 @@ const LoginScreen = ({ navigation }) => {
             }}
           />
         </View>
+        {styles.badLoginText !== "" && (
+          <TouchableOpacity>
+            <Text style={styles.badLoginText}>{state.badLoginText}</Text>
+          </TouchableOpacity>
+        )}
         <TouchableOpacity
           style={styles.loginBtn}
           onPress={() => login(state.username, state.password)}
@@ -106,6 +113,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 40,
     marginBottom: 10,
+  },
+  badLoginText: {
+    color: "red",
   },
   loginText: {
     color: "white",

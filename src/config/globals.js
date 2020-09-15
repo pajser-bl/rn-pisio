@@ -1,7 +1,6 @@
-export default {
-  creds: {
-    username: "",
-    password: "",
-    access_token: "",
-  },
+const creds = {
+  username: "",
+  password: "",
+  access_token: "",
 };
+export default creds;

@@ -1,8 +1,7 @@
 import { create } from "apisauce";
-
 import endpoints from "../config/endpoints";
 
-const apiClient = create({
+const clientApi = create({
   baseURL: endpoints.baseUrl,
   headers: {
     Accept: "application/json",
@@ -10,5 +9,4 @@ const apiClient = create({
     "Content-Type": "application/json",
   },
 });
-
-export default apiClient;
+export default clientApi;

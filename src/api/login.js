@@ -1,8 +1,8 @@
-import ApiClient from "./ApiClient";
+import clientApi from "./client";
 import endpoints from "../config/endpoints";
 
 const postAuth = (username, password) =>
-  ApiClient.post(endpoints.auth, {
+  clientApi.post(endpoints.auth, {
     username: username,
     password: password,
   });
