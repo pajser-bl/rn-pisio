@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import AppScreen from "../components/AppScreen";
 import AppCard from "../components/AppCard";
 import assetApi from "../api/asset";
 import AppButton from "../components/AppButton";
 
-const AssetViewScreen = ({ route, navigation, assets }) => {
+const AssetViewScreen = ({ route, navigation }) => {
   const [asset, setAsset] = useState([]);
-  const [assets, setAsset] = useState(assets);
   const [error, setError] = useState(false);
-
   useEffect(() => {
     loadAsset();
   }, []);
@@ -36,7 +34,6 @@ const AssetViewScreen = ({ route, navigation, assets }) => {
         title="Delete"
         onPress={() => {
           assetApi.deleteAsset(asset.id);
-          parent.refres();
           navigation.navigate("Assets");
         }}
       ></AppButton>
