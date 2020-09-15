@@ -12,7 +12,7 @@ const AssetIndexScreen = ({ navigation }) => {
   }, []);
 
   const loadAssets = async () => {
-    const response = await assetApi.getAssets();
+    const response = await assetApi.getAssets().catch();
     if (!response.ok) {
       return setError(true);
     }
